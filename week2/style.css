@@ -1,0 +1,42 @@
+/* universal selector */
+
+/* * {
+  color: hotpink;
+} */
+
+h1 {
+  color: blueviolet;
+  font-weight: bold;
+  font-size: 32px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+h2 {
+  color: limegreen;
+}
+
+p {
+  /* font-weight: bold; */
+}
+
+.bluecolor {
+  color: blue;
+}
+
+#purple-color,
+h3 {
+  color: purple;
+}
+
+section {
+  text-align: center;
+  border: 2px solid crimson;
+  margin-bottom: 20px;
+}
+
+h2 {
+  border: 1px dashed green;
+}

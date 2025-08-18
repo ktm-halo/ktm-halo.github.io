@@ -4,13 +4,20 @@
   color: hotpink;
 } */
 
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: bold; */
+  font-style: normal;
+  background: beige;
+}
+
 h1 {
   color: blueviolet;
   font-weight: bold;
   font-size: 32px;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
+  font-family: "Libertinus Serif", serif;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -35,6 +42,7 @@ section {
   text-align: center;
   border: 2px solid crimson;
   margin-bottom: 20px;
+  background-color: rgb(150, 245, 213);
 }
 
 h2 {

@@ -1,0 +1,265 @@
+html {
+  scroll-behavior: smooth; /* smooth scroll */
+  background: #ffffff;
+}
+
+/* font and text */
+h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: #111827;
+  font-size: xxx-large;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.6;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #444;
+  line-height: 1.6;
+}
+
+.heading {
+  text-align: center;
+  margin-top: 20px;
+  color: #111827;
+}
+
+.heading a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.heading a:hover {
+  color: #1d4ed8; /* darker color when hover */
+  text-decoration: underline;
+}
+
+/* menu navigation */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  padding: 15px;
+  background: #2563eb;
+  font-family: "Montserrat", sans-serif;
+}
+
+.nav li {
+  list-style: none;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* section */
+section {
+  border-left: 5px solid #2563eb; /* accent xanh */
+  border-radius: 8px;
+  padding: 25px;
+  margin: 25px auto;
+  background-color: #ffffff;
+  max-width: 900px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* intro and table */
+.Introduction,
+.table,
+.info {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  border-left: 4px solid #2563eb;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* table */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.6;
+}
+
+.table th {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+.table tr:hover {
+  background: #f0f4ff; /* xanh nhạt hover */
+  transition: background-color 0.3s;
+}
+
+/* footer */
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #111827;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  color: white;
+}
+
+footer a {
+  color: #93c5fd;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+/* .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px;
+  max-width: 1000px;
+  margin: 30px auto;
+} */
+
+/* group (section) */
+.group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+/* fixed ul inside class */
+.actions ul {
+  padding-left: 20px;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.8;
+  margin: 25px auto;
+  max-width: 900px;
+}
+
+.actions li {
+  margin-bottom: 8px;
+}
+
+/* group update */
+.group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* intro section update */
+.intro-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  background: #ffffff;
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.intro-item h3 {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+
+.intro-item p,
+.intro-item td,
+.intro-item th {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* table in intro section update */
+.intro-item .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.intro-item .table th,
+.intro-item .table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+}
+
+.intro-item .table th {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+}
+
+/* group title */
+.group-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 15px;
+  text-align: left;
+  padding-bottom: 8px;
+  grid-column: 1 / -1;
+}

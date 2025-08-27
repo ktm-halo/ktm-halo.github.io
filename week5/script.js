@@ -57,7 +57,16 @@ console.log("hello", student2);
 console.log("hello", student3);
 console.log("hello", student4);
 
-let students = ["Alice", "Bob", "Charlie", "David", "Eve"];
+let students = [
+  "Alice",
+  "Bob",
+  "Charlie",
+  "David",
+  "Eve",
+  "Frank",
+  "Grace",
+  "Hannah",
+];
 // console.log("hello", students[0]);
 // console.log("hello", students[1]);
 // console.log("hello", students[2]);
@@ -83,3 +92,25 @@ for (let i = 0; i < students.length; i++) {
 // } else if (score < 50) {
 //   console.log("Sorry you failed");
 // }
+
+let shoppingCart = [
+  { name: "T-shirt", price: 20 },
+  { name: "Jeans", price: 50 },
+  { name: "Sneakers", price: 80 },
+  { name: "Backpack", price: 30 },
+];
+console.log("shopping array size", shoppingCart.length);
+let cartTotal = 0;
+for (let i = 0; i < shoppingCart.length; i++) {
+  cartTotal = cartTotal + shoppingCart[i].price;
+  console.log("my purchased item is", shoppingCart[i].name);
+  console.log("it price is", shoppingCart[i].price);
+  console.log("value of i", i);
+  console.log("total so far", cartTotal);
+}
+
+if (cartTotal > 200) {
+  console.log("You get a discount of 10%");
+} else {
+  console.log("You do not get a discount");
+}

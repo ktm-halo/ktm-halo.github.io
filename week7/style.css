@@ -1,0 +1,25 @@
+audio,
+video {
+  display: block;
+  margin: 20px;
+}
+
+video {
+  width: 600px;
+  height: 400px;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer; /* click vào thì con trỏ biến thành cái tay */
+  background: aliceblue;
+  margin-right: 15px;
+}
+
+button:hover {
+  scale: 0.9; /* khi hover vào thì button to lên x lần */
+}

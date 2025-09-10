@@ -63,5 +63,5 @@ function removeMe() {
 
 function handleClick() {
   console.log("did you click me?");
-  topHeading.textContent = "My cart";
+  topHeading.textContent = "My cat";
 }

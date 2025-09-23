@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
+
+    <!-- This website of mine was created to showcase three music videos by a friend
+    of mine in Vietnam. I was part of the production team and have full rights
+    to use it for this assignment -->
+  </head>
+  <body>
+    <div class="outer">
+      <!-- video title -->
+      <section class="video-title">
+        <h1>Now Playing: <span id="video-name"></span></h1>
+      </section>
+
+      <section class="video-container">
+        <!-- player main MV -->
+        <video id="my-video" poster="poster.jpg">
+          <source
+            src="https://files.catbox.moe/mi1rkn.webm"
+            type="video/webm"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <!-- lyrics & credit box (i expend from video list code in sample web) -->
+        <section class="video-list">
+          <div class="info-toggle" style="display: flex; gap: 0.5rem">
+            <button id="lyrics-toggle-btn" class="active">Lyrics</button>
+            <button id="credit-toggle-btn">Credit</button>
+          </div>
+          <!-- The most distinctive feature of my project is that I developed a
+          real-time lyrics display function, which enhances the overall music
+          video viewing experience. In reality, viewers often get too focused on
+          the visuals and may miss the lyrics. Moreover, since my music videos
+          are not in English, having the lyrics displayed can make it easier for
+          viewers to read along or even use Google Translate to understand them
+          better -->
+          At first, I only displayed the lyrics for one main video, but to make
+          the project more polished, I used JavaScript to enable lyrics for all
+          three music videos. I still kept this section here to show my original
+          idea.
+          <div id="lyrics-box" style="margin-top: 0.75rem">
+            <!-- <p data-time="7">[00:07] Dame un Grrraaaaaaa</p>
+            <p data-time="10">[00:10] Every opps sh*t</p>
+            <p data-time="14">[00:14] Dame un Grrraaaaaa</p>
+            <p data-time="17">[00:17] Everything de*d</p>
+            <p data-time="20">[00:20] Kraa kraa b*tch</p>
+            <p data-time="21">
+              [00:21] Every opps sh*t, everything de*d bố mày xiên ch*t, gi*t
+              hết, mấy thằng oắt con
+            </p>
+            <p data-time="24">
+              [00:24] 19 tuổi xuống đường, đ*o thích nhún nhường, chúng mày đ*o
+              lường trước được, better f*ck off
+            </p>
+            <p data-time="28">
+              [00:28] Đ*o nể ăn trảm, chỗ bọn tao lên đ*o thể ngăn cản
+            </p>
+            <p data-time="31">
+              [00:31] Nâng cao sĩ diện, trong cái xã hội, khéo ăn dã vội, 1
+              nhát, kéo về căn bản
+            </p>
+            <p data-time="37">
+              [00:37] Ngày bọn tao tụ họp lượn quanh thành phố
+            </p>
+            <p data-time="39">
+              [00:39] Money trong bank account khiến tao bỗng trở thành bố
+            </p>
+            <p data-time="41">
+              [00:41] Nhập đoàn dích bẩn, chỗ này có thêm một tập đoàn thích lẩn
+            </p>
+            <p data-time="45">
+              [00:45] Trong thành phố bọn tao chơi đẳng cấp, đ*o thích tiếp mấy
+              thằng vô học chicken
+            </p>
+            <p data-time="48">
+              [00:48] Fake fam fake G sẽ bị cách ly hết, chúng mày có ch*t cũng
+              đ*o bao giờ yên thân
+            </p>
+            <p data-time="52">
+              [00:52] Oai quá oai mồm nổ bốc phét, trước khi xuống đường nên
+              biết rõ cái nguyên nhân
+            </p>
+            <p data-time="55">
+              [00:55] Chuyên mồm chuyên mồm, chuyên bịa cả vẽ, chỗ của bọn tao
+              có mấy thằng chuyên đâm
+            </p>
+            <p data-time="58">
+              [00:58] Cho mấy thằng opps sống không bằng chết, hữu duyên cả mày
+              tao biến nó thành duyên âm
+            </p>
+            <p data-time="62">
+              [01:02] Every opps sh*t, everything de*d bố mày xiên ch*t, gi*t
+              hết, mấy thằng oắt con
+            </p>
+            <p data-time="65">
+              [01:05] 19 tuổi xuống đường, đ*o thích nhún nhường, chúng mày đ*o
+              lường trước được, better f*ck off
+            </p>
+            <p data-time="68">
+              [01:08] Đ*o nể ăn trảm, chỗ bọn tao lên đ*o thể ngăn cản
+            </p>
+            <p data-time="72">
+              [01:12] Nâng cao sĩ diện, trong cái xã hội, khéo ăn dã vội, 1
+              nhát, kéo về căn bản
+            </p>
+            <p data-time="75">
+              [01:15] Ghét em tao thì va thử xem nào hay có lí do khác khiến mày
+              đắn đo sao
+            </p>
+            <p data-time="79">
+              [01:19] Trong tin nhắn luôn có phần vị trí, sao không thử 1 lần
+              gửi vị trí cho tao
+            </p>
+            <p data-time="82">
+              [01:22] Làm người tử tế mới khó còn nếu muốn làm ch* để các bố
+              xuống đường đi săn
+            </p>
+            <p data-time="86">
+              [01:26] It's the H-town send me location my gang, my gang, my gang
+              will come
+            </p>
+            <p data-time="89">
+              [01:29] Bước lên phố nhìn thấy các bố 1 là mày phải ngoan hay là
+              phải biết điều
+            </p>
+            <p data-time="92">
+              [01:32] Đi lên show như vị vua không ngai đang bước vào trong cung
+              điện thiết triều
+            </p>
+            <p data-time="96">
+              [01:36] Fake G, fake G bố mày khuyên thật là chúng mày phải nên
+              tránh ra xa
+            </p>
+            <p data-time="99">
+              [01:39] Lil Take với cả 1lane khác l*n gì Notti và DD Osama
+            </p>
+            <p data-time="103">
+              [01:43] Thủ đô, thủ đô bọn tao phải sinh tồn nên không khoan hồng
+              hay là nhẹ tay
+            </p>
+            <p data-time="105">
+              [01:45] Đầu mày sẽ bắt đầu đổ m*u khi Lil Take em tao nói:
+            </p>
+            <p data-time="108">[01:48] DCMM</p>
+            <p data-time="109">
+              [01:49] Hết giờ, hết giờ, hết giờ oai rồi, hết giờ phông bạt mấy
+              thằng trẻ con ơi
+            </p>
+            <p data-time="113">
+              [01:53] Chỗ các bố mày kiếm tiền chứ không phải chỗ dành cho mấy
+              thằng trẻ con chơi
+            </p> -->
+          </div>
+          <!-- credit box -->
+          <div id="credit-box" class="hidden">
+            <p>Music production Composer: Lil Take, 1lane</p>
+            <p>Performed: Lil Take, 1lane</p>
+            <p>Music producer: th4nhd4t</p>
+            <p>Recording: Tut &nbsp; Mixing: Tut</p>
+            <p>Mastering: mint, Tut</p>
+            <p>Produced: 1160lang</p>
+            <p>Directed: 1160lang</p>
+            <p>DP: 1160lang</p>
+            <p>Asst: mint, Tut, $A Bikay</p>
+            <p>Cameo: Jamie Choi, Tut, Tung Bach, $A Bikay.</p>
+            <p>Location: ORIGIN STUDIO</p>
+          </div>
+        </section>
+      </section>
+      <!-- timeline bar -->
+      <div class="progress-bar">
+        <span id="progress-bar-fill"></span>
+      </div>
+
+      <!-- video control -->
+      <!-- I chose to organize the control buttons into separate groups directly in
+      the HTML to make the CSS styling more convenient -->
+      <section class="video-controls">
+        <!-- left side -->
+        <div class="video-controls-left">
+          <button id="mute-unmute-btn">
+            <img
+              id="mute-unmute-img"
+              src="https://img.icons8.com/ios-glyphs/30/no-audio--v1.png"
+              alt="Mute Button"
+            />
+          </button>
+        </div>
+
+        <!-- center-->
+        <div class="video-controls-center">
+          <button id="previous-btn">
+            <img
+              id="previous-img"
+              src="https://img.icons8.com/ios-glyphs/30/skip-to-start--v2.png"
+              alt="Previous Button"
+            />
+          </button>
+
+          <button id="play-pause-btn">
+            <img
+              id="play-pause-img"
+              src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+              alt="Play Button"
+            />
+          </button>
+
+          <button id="next-btn">
+            <img
+              id="next-img"
+              src="https://img.icons8.com/ios-glyphs/30/end--v2.png"
+              alt="Next Button"
+            />
+          </button>
+        </div>
+
+        <!-- right side -->
+        <div class="video-controls-right">
+          <!-- I decided not to use the traditional volume up/down buttons but
+          instead implemented a slider to provide a more intuitive experience
+          for the user. -->
+          <div class="volume-wrap">
+            <input
+              type="range"
+              id="volume-slider"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.8"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- video carousel -->
+      <!-- The video carousel is a feature I learned online and was inspired by
+      Netflix’s movie recommendations. It is not just a simple video list, but
+      also includes interactive effects when clicking, which enhances the
+      overall aesthetics -->
+      <section class="video-carousel">
+        <h3 class="carousel-title">Up next</h3>
+        <div id="carousel-track" class="carousel-track"></div>
+      </section>
+
+      <!-- timeline -->
+      <section class="timeline">
+        <!-- I implemented the like button exactly as I had learned. -->
+        <button id="like-btn">
+          <img
+            id="like-img"
+            src="https://img.icons8.com/ios-filled/50/facebook-like.png"
+            alt="Like Button"
+            width="24"
+            height="24"
+          />
+        </button>
+        <span>Total likes: <span id="likes"></span></span>
+      </section>
+    </div>
+
+    <!-- footer-->
+    <!-- I used only the icons provided in the assignment and simply enhanced their
+    appearance through CSS. -->
+    <footer>Icons by <a href="https://icons8.com">Icons8</a></footer>
+  </body>
+</html>

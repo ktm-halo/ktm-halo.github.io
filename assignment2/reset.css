@@ -1,0 +1,232 @@
+:root {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --accent-color: #bb86fc;
+  --secondary-color: #2c2c2c;
+  --button-bg: #333;
+  --button-hover: #444;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.player-container {
+  max-width: 900px;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "video sidebar"
+    "suggestions suggestions"
+    "comments comments";
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+}
+
+.video-section {
+  grid-area: video;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-header h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.video-wrapper video {
+  width: 100%;
+  max-width: 100%;
+  background-color: black;
+}
+
+.video-controls {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mute-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.seek-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--secondary-color);
+  position: relative;
+  cursor: pointer;
+}
+
+.seek-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent-color);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.control-buttons button {
+  background-color: var(--button-bg);
+  border: none;
+  color: var(--text-color);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.control-buttons button:hover {
+  background-color: var(--button-hover);
+}
+
+.volume-control input[type="range"] {
+  width: 100px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.toggle-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.toggle-box button {
+  flex: 1;
+  padding: 8px;
+  background-color: var(--button-bg);
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.toggle-box button.active {
+  background-color: var(--accent-color);
+  color: #000; /* for contrast when active */
+}
+
+.info-box {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.suggestions-section {
+  grid-area: suggestions;
+}
+
+.suggestions-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.suggestion-btn {
+  background-color: var(--button-bg);
+  border: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.suggestion-btn img {
+  width: 120px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.suggestion-btn span {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.comments-section {
+  grid-area: comments;
+}
+
+#comment-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  border: 1px solid var(--secondary-color);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#comment-list .comment {
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+#comment-list .comment:last-child {
+  border-bottom: none;
+}
+
+#comment-form {
+  display: flex;
+  gap: 10px;
+}
+
+#comment-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 3px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+#comment-form button {
+  padding: 8px 12px;
+  background-color: var(--accent-color);
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .player-container {
+    grid-template-areas:
+      "video"
+      "sidebar"
+      "suggestions"
+      "comments";
+    grid-template-columns: 1fr;
+  }
+  .volume-control input[type="range"] {
+    width: 80px;
+  }
+}

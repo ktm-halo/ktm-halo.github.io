@@ -1,0 +1,422 @@
+I
+  chose
+  a
+  slightly
+  darker
+  style
+  to
+  create
+  a
+  hip-hop
+  vibe
+  that
+  matches
+  the
+  music
+  style.
+  :root {
+  --bg: #0f0f10;
+  --panel: #1a1512;
+  --panel-2: #231a16;
+  --text: #eae6dd;
+  --muted: #b9b3a8;
+  --accent: #ff4d4d; /* đỏ hiphop */
+  --accent-2: #ffb84d; /* vàng ấm */
+  --line: #2c2a28;
+}
+
+/* Reset nhẹ nhàng */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Khung ngoài (giống mẫu) */
+.outer {
+  max-width: 1200px;
+  width: calc(100% - 40px); /* chừa 20px mỗi bên */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tiêu đề Now Playing (giống mẫu) */
+.video-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px dashed #ffffff22;
+  padding-top: 0.5rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.2px;
+}
+.video-title span#video-name {
+  color: var(--accent-2);
+}
+
+/* =========================
+   2 CỘT: VIDEO | LYRICS/CREDIT
+   ========================= */
+.video-container {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start; /* tránh kéo giãn video */
+}
+
+/* Video trái */
+.video-container > video {
+  flex: 1 1 0;
+  width: 100%;
+  height: auto; /* giữ tỉ lệ gốc */
+  background: #000;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px #00000055;
+  object-fit: contain;
+}
+
+/* Panel phải (lyrics/credit) — cao sẽ được JS sync = video */
+.video-list {
+  min-width: 320px;
+  flex: 1 1 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden; /* khung cố định, nội dung cuộn */
+}
+
+/* Toggle nút Lyrics/Credit */
+.info-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+.info-toggle button {
+  flex: 1;
+  background: #2d2520;
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: transform 0.12s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.info-toggle button:hover {
+  transform: translateY(-1px);
+}
+.info-toggle button.active {
+  background: linear-gradient(180deg, #3a2b25, #2c201b);
+  border-color: #4a3b33;
+  box-shadow: 0 8px 18px rgba(255, 77, 77, 0.15);
+}
+
+/* Hộp nội dung cuộn (ổn định layout, không giật) */
+#lyrics-box,
+#credit-box {
+  flex: 1 1 auto; /* chiếm chiều cao còn lại */
+  min-height: 0; /* cho phép overflow hoạt động */
+  overflow-y: auto;
+  padding-right: 6px;
+  scrollbar-gutter: stable both-edges;
+}
+
+/* Lyrics */
+#lyrics-box p {
+  margin: 0.15rem 0;
+  color: #ddd;
+  transition: color 0.15s ease, font-weight 0.15s ease, transform 0.15s ease;
+}
+#lyrics-box p.highlight {
+  color: var(--accent);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  transform: translateX(2px);
+}
+
+/* Credit */
+#credit-box p {
+  margin: 0.25rem 0;
+  color: var(--muted);
+}
+.hidden {
+  display: none;
+}
+
+/* =========================
+   TIMELINE (dưới khối video)
+   ========================= */
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #1e1e20;
+  border: 1px solid #242426;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px #00000066;
+}
+#progress-bar-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #ff704d);
+  box-shadow: 0 0 18px rgba(255, 77, 77, 0.35);
+  transition: width 0.2s linear;
+}
+
+/* =========================
+   CONTROLS — 1 hàng: 
+   (Mute + Prev) | (PLAY) | (Next + Volume)
+   ========================= */
+.video-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 3 cụm trải đều */
+  gap: 1rem;
+  width: 100%;
+}
+
+.video-controls-left,
+.video-controls-center,
+.video-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Center group: Prev + Play + Next */
+.video-controls-center {
+  justify-content: center;
+  flex: 1;
+}
+
+/* Nút Play to hơn */
+#play-pause-btn {
+  width: 70px;
+  height: 50px;
+  background: linear-gradient(180deg, #3a2b25, #2b201b);
+  border: 1px solid #4a3b33;
+  border-radius: 10px;
+  box-shadow: 0 12px 26px rgba(255, 77, 77, 0.18);
+}
+#play-pause-btn img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Style nút chung */
+.video-controls button {
+  background: #2f2925;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.12s ease, box-shadow 0.18s ease,
+    border-color 0.2s ease;
+}
+.video-controls button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(255, 184, 77, 0.12);
+  border-color: #3e332c;
+}
+.video-controls button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Nút PLAY nổi bật */
+#play-pause-btn {
+  width: 70px;
+  height: 50px;
+  background: linear-gradient(180deg, #3a2b25, #2b201b);
+  border: 1px solid #4a3b33;
+  box-shadow: 0 12px 26px rgba(255, 77, 77, 0.18);
+}
+#play-pause-btn img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Volume slider (bên phải) */
+.volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+#volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 170px;
+  height: 6px;
+  background: #1d1d1f;
+  border: 1px solid #2a2a2c;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+}
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #0e0e10;
+  box-shadow: 0 0 0 4px rgba(255, 77, 77, 0.25);
+  transition: transform 0.12s ease;
+}
+#volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.06);
+}
+#volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #0e0e10;
+}
+
+/* =========================
+   CAROUSEL (poster tĩnh kiểu Netflix)
+   ========================= */
+.video-carousel {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.carousel-title {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #bfb9ad;
+  letter-spacing: 0.3px;
+}
+.carousel-track {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.video-carousel .thumb {
+  position: relative;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  transform: scale(0.92);
+  opacity: 0.65;
+  transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
+}
+.video-carousel .thumb:hover {
+  transform: scale(0.96);
+  opacity: 0.85;
+  box-shadow: 0 8px 26px rgba(255, 184, 77, 0.18);
+}
+.video-carousel .thumb.active {
+  transform: scale(1.06);
+  opacity: 1;
+  box-shadow: 0 14px 36px rgba(255, 77, 77, 0.35);
+}
+.video-carousel .thumb img {
+  display: block;
+  width: 220px;
+  height: 124px; /* ~16:9 */
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.05);
+}
+.video-carousel .thumb .caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #f7f6f2;
+  text-shadow: 0 1px 2px #000;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75) 100%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================
+   TIMELINE / LIKE (giống mẫu)
+   ========================= */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.timeline button {
+  background: #2f2925;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+  margin-top: auto; /* đẩy footer xuống cuối */
+  text-align: center;
+  color: #9a948a;
+  font-size: 0.95rem;
+  padding: 1rem 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* xếp dọc */
+  min-height: 100vh; /* chiếm đủ chiều cao màn hình */
+}
+
+/* Tạo khoảng cách đều cho các phần dưới video */
+.progress-bar,
+.video-controls,
+.video-carousel,
+.timeline,
+footer {
+  margin-top: 1.5rem; /* khoảng cách phía trên */
+}
+
+.video-container {
+  display: flex;
+  justify-content: center; /* đưa cả cụm vào giữa */
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.video-container > video {
+  width: 70%; /* chiếm 60% chiều ngang container */
+  flex-shrink: 0; /* không co nhỏ lại */
+}
+
+.video-list {
+  width: 30%;
+  min-width: 300px;
+}

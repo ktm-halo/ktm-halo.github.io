@@ -1,20 +1,5 @@
-I
-  chose
-  a
-  slightly
-  darker
-  style
-  to
-  create
-  a
-  hip-hop
-  vibe
-  that
-  matches
-  the
-  music
-  style.
-  :root {
+/* I chose a slightly darker style to create a hip-hop vibe that matches the music style. */
+:root {
   --bg: #0f0f10;
   --panel: #1a1512;
   --panel-2: #231a16;
@@ -25,7 +10,6 @@ I
   --line: #2c2a28;
 }
 
-/* Reset nhẹ nhàng */
 * {
   box-sizing: border-box;
 }
@@ -41,7 +25,7 @@ body {
   line-height: 1.5;
 }
 
-/* Khung ngoài (giống mẫu) */
+/* outer box */
 .outer {
   max-width: 1200px;
   width: calc(100% - 40px); /* chừa 20px mỗi bên */
@@ -49,7 +33,7 @@ body {
   padding: 20px;
 }
 
-/* Tiêu đề Now Playing (giống mẫu) */
+/* now playing tittle */
 .video-title {
   display: flex;
   align-items: center;
@@ -63,27 +47,25 @@ body {
   color: var(--accent-2);
 }
 
-/* =========================
-   2 CỘT: VIDEO | LYRICS/CREDIT
-   ========================= */
+/* lyrics and credit panel */
 .video-container {
   display: flex;
   gap: 1rem;
-  align-items: flex-start; /* tránh kéo giãn video */
+  align-items: flex-start;
 }
 
-/* Video trái */
+/* video panel */
 .video-container > video {
   flex: 1 1 0;
   width: 100%;
-  height: auto; /* giữ tỉ lệ gốc */
+  height: auto;
   background: #000;
   border-radius: 10px;
   box-shadow: 0 10px 30px #00000055;
   object-fit: contain;
 }
 
-/* Panel phải (lyrics/credit) — cao sẽ được JS sync = video */
+/* right panel */
 .video-list {
   min-width: 320px;
   flex: 1 1 0;
@@ -94,10 +76,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  overflow: hidden; /* khung cố định, nội dung cuộn */
+  overflow: hidden;
 }
 
-/* Toggle nút Lyrics/Credit */
+/* toggle button */
 .info-toggle {
   display: flex;
   gap: 0.5rem;
@@ -123,11 +105,11 @@ body {
   box-shadow: 0 8px 18px rgba(255, 77, 77, 0.15);
 }
 
-/* Hộp nội dung cuộn (ổn định layout, không giật) */
+/* scroll bar */
 #lyrics-box,
 #credit-box {
-  flex: 1 1 auto; /* chiếm chiều cao còn lại */
-  min-height: 0; /* cho phép overflow hoạt động */
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
   padding-right: 6px;
   scrollbar-gutter: stable both-edges;
@@ -156,9 +138,7 @@ body {
   display: none;
 }
 
-/* =========================
-   TIMELINE (dưới khối video)
-   ========================= */
+/* timeline bar */
 .progress-bar {
   width: 100%;
   height: 10px;
@@ -177,14 +157,11 @@ body {
   transition: width 0.2s linear;
 }
 
-/* =========================
-   CONTROLS — 1 hàng: 
-   (Mute + Prev) | (PLAY) | (Next + Volume)
-   ========================= */
+/* video control */
 .video-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 3 cụm trải đều */
+  justify-content: space-between;
   gap: 1rem;
   width: 100%;
 }
@@ -197,13 +174,13 @@ body {
   gap: 0.6rem;
 }
 
-/* Center group: Prev + Play + Next */
+/* center group */
 .video-controls-center {
   justify-content: center;
   flex: 1;
 }
 
-/* Nút Play to hơn */
+/* play button  */
 #play-pause-btn {
   width: 70px;
   height: 50px;
@@ -217,7 +194,7 @@ body {
   height: 28px;
 }
 
-/* Style nút chung */
+/* other buttons */
 .video-controls button {
   background: #2f2925;
   color: var(--text);
@@ -243,7 +220,7 @@ body {
   height: 24px;
 }
 
-/* Nút PLAY nổi bật */
+/* play button update */
 #play-pause-btn {
   width: 70px;
   height: 50px;
@@ -256,7 +233,7 @@ body {
   height: 28px;
 }
 
-/* Volume slider (bên phải) */
+/* volume slider */
 .volume-wrap {
   display: flex;
   align-items: center;
@@ -295,9 +272,7 @@ body {
   border: 2px solid #0e0e10;
 }
 
-/* =========================
-   CAROUSEL (poster tĩnh kiểu Netflix)
-   ========================= */
+/* carousel */
 .video-carousel {
   margin-top: 0.5rem;
   display: flex;
@@ -361,9 +336,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* =========================
-   TIMELINE / LIKE (giống mẫu)
-   ========================= */
+/* like button */
 .timeline {
   display: flex;
   align-items: center;
@@ -378,9 +351,7 @@ body {
   cursor: pointer;
 }
 
-/* =========================
-   FOOTER
-   ========================= */
+/* footer */
 footer {
   margin-top: auto; /* đẩy footer xuống cuối */
   text-align: center;
@@ -388,32 +359,33 @@ footer {
   font-size: 0.95rem;
   padding: 1rem 0;
 }
-
+/* fix footer */
 body {
   display: flex;
-  flex-direction: column; /* xếp dọc */
-  min-height: 100vh; /* chiếm đủ chiều cao màn hình */
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Tạo khoảng cách đều cho các phần dưới video */
+/* gap update */
 .progress-bar,
 .video-controls,
 .video-carousel,
 .timeline,
 footer {
-  margin-top: 1.5rem; /* khoảng cách phía trên */
+  margin-top: 1.5rem;
 }
 
+/* some bug fix */
 .video-container {
   display: flex;
-  justify-content: center; /* đưa cả cụm vào giữa */
+  justify-content: center;
   align-items: flex-start;
   gap: 1rem;
 }
 
 .video-container > video {
-  width: 70%; /* chiếm 60% chiều ngang container */
-  flex-shrink: 0; /* không co nhỏ lại */
+  width: 70%;
+  flex-shrink: 0;
 }
 
 .video-list {

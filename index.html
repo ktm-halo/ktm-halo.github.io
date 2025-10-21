@@ -3,10 +3,183 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halo's first web page</title>
+    <title>Media Player Website</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Screen-reader only (nhỏ gọn) -->
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      /* (tuỳ chọn) style cảnh báo khi Drive lỗi */
+      .warn {
+        background: #2a2a2a;
+        border: 1px solid #555;
+        color: #ffbcbc;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 10px;
+      }
+      .warn a {
+        color: #bb86fc;
+      }
+    </style>
+
+    <!-- App JS -->
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <h1>Heheh world!!!</h1>
-    <!-- !TAB -->
+    <!-- Header -->
+    <header>
+      <h1>Media Player Website</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Music</a></li>
+        <li><a href="#">Playlists</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container">
+      <h2 id="now-playing-title">Now Playing: Unknown</h2>
+
+      <!-- Video + Sidebar layout -->
+      <div class="media-player-row">
+        <!-- LEFT: Video -->
+        <div class="video-side">
+          <div class="video-wrapper">
+            <video
+              id="custom-video-player"
+              preload="metadata"
+              poster="poster.jpg"
+            >
+              <source
+                src="https://files.catbox.moe/mi1rkn.webm"
+                type="video/webm"
+              />
+            </video>
+          </div>
+
+          <div class="custom-controls">
+            <!-- Hàng 1: Timeline -->
+            <div
+              class="progress-bar"
+              id="progress-bar"
+              aria-label="Video timeline"
+              role="slider"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <span id="progress-bar-fill"></span>
+            </div>
+
+            <!-- Hàng 2: Buttons -->
+            <div class="controls-row">
+              <button id="mute-btn" aria-label="Mute or unmute audio">
+                🔇
+              </button>
+
+              <div
+                class="control-buttons"
+                role="group"
+                aria-label="Playback controls"
+              >
+                <button id="rewind-btn" aria-label="Rewind 10 seconds">
+                  «10s
+                </button>
+                <button id="play-pause-btn" aria-label="Play or pause">
+                  ▶️
+                </button>
+                <button id="forward-btn" aria-label="Forward 10 seconds">
+                  10s»
+                </button>
+              </div>
+
+              <div class="volume-control">
+                <label for="volume-slider" class="sr-only">Volume</label>
+                <input
+                  type="range"
+                  id="volume-slider"
+                  min="0"
+                  max="1"
+                  step="0.05"
+                  aria-label="Volume"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Lyrics / Credit -->
+        <aside class="info-side" aria-label="Lyrics and credits">
+          <div
+            class="info-toggle"
+            role="tablist"
+            aria-label="Toggle lyrics or credit"
+          >
+            <button
+              id="lyrics-toggle-btn"
+              class="active"
+              role="tab"
+              aria-selected="true"
+            >
+              Lyrics
+            </button>
+            <button id="credit-toggle-btn" role="tab" aria-selected="false">
+              Credit
+            </button>
+          </div>
+
+          <div id="lyrics-box">
+            <p data-time="0">[00:00] Let’s go!</p>
+            <p data-time="5">[00:05] First verse hits hard</p>
+            <p data-time="10">[00:10] Hook repeats twice</p>
+          </div>
+
+          <div id="credit-box" class="hidden">
+            <p>Artist: Rapper X</p>
+            <p>Director: Jane Doe</p>
+            <p>Producer: DJ MixUp</p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Comments -->
+      <section class="comments-section" aria-labelledby="comments-title">
+        <h2 id="comments-title">Comments</h2>
+        <div id="comment-list" aria-live="polite"></div>
+        <form id="comment-form">
+          <label for="comment-input" class="sr-only">Add a comment</label>
+          <input
+            type="text"
+            id="comment-input"
+            placeholder="Leave a comment..."
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Media Player Website. All rights reserved.</p>
+    </footer>
   </body>
 </html>

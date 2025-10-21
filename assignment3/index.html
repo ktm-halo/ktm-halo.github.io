@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Scroll Through My Vision — CSS Scroll-Driven</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <!-- ============================================================
+     ✨ Project Note / Concept Idea (Author’s Comment)
+     "Scroll Through My Portfolio" is a project I designed to be developed 
+     further as a long-term personal Art Portfolio. It showcases my creative work 
+     in design, photography, and interaction. 
+     Currently, this is an experimental prototype version — some detailed 
+     sections are not yet fully implemented, but in the future, 
+     this will grow beyond an assignment into my personal evolving portfolio. This project was developed by me with feedback from lecturer Rohit. I used ChatGPT for purposes such as debugging, reorganizing CSS after multiple revisions that caused overlap issues, and helping refine written notes in English beacause during the development process, I often took notes in my native language — Vietnamese to save time and easier for me to check"
+============================================================ -->
+
+    <!-- ============================
+         SCROLL NAVIGATION + THEME TOGGLE
+         ============================ -->
+    <nav class="scroll-nav">
+      <a class="spy spy-hero" href="#hero"
+        ><span class="dot"></span><span class="label">Intro</span></a
+      >
+      <a class="spy spy-projects" href="#projects"
+        ><span class="dot"></span><span class="label">Projects</span></a
+      >
+      <a class="spy spy-photos" href="#sectionPin"
+        ><span class="dot"></span><span class="label">Photography</span></a
+      >
+      <a class="spy spy-mosaic" href="#mosaic"
+        ><span class="dot"></span><span class="label">Gallery</span></a
+      >
+      <a class="spy spy-about" href="#about"
+        ><span class="dot"></span><span class="label">About</span></a
+      >
+      <a class="spy spy-contact" href="#contact"
+        ><span class="dot"></span><span class="label">Contact</span></a
+      >
+    </nav>
+
+    <!-- Theme toggle button -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+      🌙
+    </button>
+
+    <!-- Progress bar (scroll-driven animation) -->
+    <div class="progress"></div>
+
+    <!-- ============================
+         01. HERO SECTION
+         ============================ -->
+    <section id="hero" class="sec hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="wrap">
+        <h1 class="reveal">Scroll Through My Vision</h1>
+        <p class="reveal">
+          A personal creative journey through design, photography, and motion.
+        </p>
+
+        <!-- Quick links for section shortcuts -->
+        <div class="hero-links reveal">
+          <a href="#projects">Projects</a>
+          <a href="#sectionPin">Photography</a>
+          <a href="#mosaic">Gallery</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Scroll cue animation -->
+        <div class="scroll-cue" aria-hidden="true">
+          <span>Scroll to explore</span>
+          <svg viewBox="0 0 24 24" class="arrow">
+            <path
+              d="M12 5v14M5 12l7 7 7-7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         02. PROJECTS SECTION
+         ============================ -->
+    <section id="projects" class="sec projects">
+      <div class="wrap">
+        <header class="intro reveal">
+          <h2>Design Projects</h2>
+          <p>I focus on branding, UI/UX, and social media design.</p>
+        </header>
+
+        <!-- Project grid -->
+        <div class="grid">
+          <!-- Each project card -->
+          <figure class="card reveal">
+            <div class="img-wrap">
+              <img src="finalpostera2.png" alt="Project 01" />
+              <div class="overlay">
+                <div class="overlay-text">
+                  <h3>CLAWARA</h3>
+                  <p>Design & Computing 2 Assignment</p>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <strong>CLAWARA</strong>
+              <span>3D • 2024</span>
+              <button class="more-btn" type="button">Details</button>
+              <div class="more-panel"><p>Updating...</p></div>
+            </figcaption>
+          </figure>
+
+          <figure class="card reveal">
+            <div class="img-wrap">
+              <img src="Asset 1@8x.png" alt="Project 02" />
+              <div class="overlay">
+                <div class="overlay-text">
+                  <h3>Reverie Campaign</h3>
+                  <p>Brand identity for a small business.</p>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <strong>Reverie</strong>
+              <span>Branding • 2024</span>
+              <button class="more-btn" type="button">Details</button>
+              <div class="more-panel"><p>Updating...</p></div>
+            </figcaption>
+          </figure>
+
+          <figure class="card reveal">
+            <div class="img-wrap">
+              <img
+                src="Screenshot 2025-10-21 at 16.14.49.png"
+                alt="Project 03"
+              />
+              <div class="overlay">
+                <div class="overlay-text">
+                  <h3>Commodore64 Rebranding</h3>
+                  <p>Graphic Design Assignment</p>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <strong>Commodore64</strong>
+              <span>Branding • 2025</span>
+              <button class="more-btn" type="button">Details</button>
+              <div class="more-panel">
+                <p>
+                  A kinetic poster experiment combining typographic rhythm and
+                  motion.
+                </p>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="card reveal">
+            <div class="img-wrap">
+              <img src="blue.png" alt="Project 04" />
+              <div class="overlay">
+                <div class="overlay-text">
+                  <h3>SafeRide for Kid</h3>
+                  <p>Interactive prototype concept built for Assignment.</p>
+                </div>
+              </div>
+            </div>
+            <figcaption>
+              <strong>SafeRide for Kid</strong>
+              <span>UIUX • 2025</span>
+              <button class="more-btn" type="button">Details</button>
+              <div class="more-panel">
+                <p>
+                  Built using HTML, CSS, and vanilla JS — focusing on
+                  microinteractions and transitions.
+                </p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         03. PHOTOGRAPHY (Horizontal scroll + window carousel)
+         from https://scroll-driven-animations.style/ i will go deeper in css file note
+         ============================ -->
+    <section id="sectionPin" aria-label="Photography">
+      <div class="pin-wrap-sticky">
+        <div class="pin-head">
+          <h2>Photography</h2>
+          <p>
+            A mix of personal and client projects — click any image to explore.
+          </p>
+        </div>
+
+        <div class="pin-wrap">
+          <!-- Horizontal image slides -->
+          <div class="slide"><img src="34.jpg" alt="Photo 01" /></div>
+          <div class="slide">
+            <img src="Lo_Son_Ha_EthansLoops_2.jpg" alt="Photo 02" />
+          </div>
+          <div class="slide">
+            <img src="BL5A6094-Edit.jpg" alt="Photo 03" />
+          </div>
+          <div class="slide">
+            <img src="Ha_Lo_landscape_after.jpg" alt="Photo 04" />
+          </div>
+          <div class="slide">
+            <img src="Ha_Lo_portrait_after.jpeg" alt="Photo 05" />
+          </div>
+          <div class="slide"><img src="anche.jpg" alt="Photo 06" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         04. GALLERY MOSAIC
+         ============================ -->
+    <section id="mosaic" class="sec mosaic">
+      <div class="wrap">
+        <header class="intro reveal">
+          <h2>My Gallery</h2>
+          <p>(coming soon)</p>
+        </header>
+        <div class="mosaic-grid">
+          <!-- placeholder images -->
+          <figure class="mtile t1">
+            <img src="https://picsum.photos/900/600?random=71" alt="Mosaic 1" />
+            <figcaption>Series A • 2025</figcaption>
+          </figure>
+          <figure class="mtile t2">
+            <img
+              src="https://picsum.photos/800/1200?random=72"
+              alt="Mosaic 2"
+            />
+            <figcaption>Series B • 2024</figcaption>
+          </figure>
+          <figure class="mtile t3">
+            <img src="https://picsum.photos/900/600?random=73" alt="Mosaic 3" />
+            <figcaption>Series C • 2023</figcaption>
+          </figure>
+          <figure class="mtile t4">
+            <img src="https://picsum.photos/900/600?random=74" alt="Mosaic 4" />
+            <figcaption>Series D • 2025</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         05. ABOUT
+         ============================ -->
+    <section id="about" class="sec about">
+      <div class="wrap">
+        <h2 class="reveal">About Me</h2>
+        <p class="reveal">
+          I’m a Design Studies student at RMIT University focusing on Graphic
+          and UI/UX design. Alongside design, I’m also involved in photography,
+          videography, and post-production. This portfolio serves as a showcase
+          of my creative projects — blending visual design, interaction, and
+          storytelling.
+        </p>
+
+        <!-- Skills and Tools -->
+        <div class="skills reveal">
+          <h3>Skills & Tools</h3>
+          <ul>
+            <li>Adobe Creative Suite</li>
+            <li>Video Editing</li>
+            <li>UI/UX Design & Wireframing</li>
+            <li>Branding & Visual Identity</li>
+            <li>Photography & Image Editing</li>
+            <li>HTML / CSS / JavaScript (Frontend)</li>
+          </ul>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="experience reveal">
+          <h3>Work Experience</h3>
+          <ul>
+            <li>
+              <strong>Technical Executive</strong> — RMIT Photography Club Hanoi
+              <span>2024 – 2025</span>
+            </li>
+            <li>
+              <strong>Content Creator</strong> — Cao Lau Barbershop
+              <span>2024</span>
+            </li>
+            <li>
+              <strong>Design Team</strong> — Linh Linh Photobooth
+              <span>2024</span>
+            </li>
+            <li>
+              <strong>Freelance Photographer</strong> <span>2022 – Now</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         FOOTER
+         ============================ -->
+    <footer class="foot">
+      <p>
+        Thank you for scrolling with me — I look forward to hearing your
+        feedback.
+      </p>
+    </footer>
+
+    <!-- ============================
+         06. CONTACT
+         ============================ -->
+    <section id="contact" class="sec contact">
+      <div class="wrap">
+        <h2 class="reveal">Let’s Collaborate</h2>
+        <p class="reveal tagline">
+          Available for freelance projects, collaborations, and creative
+          experiments.
+        </p>
+
+        <!-- Signature animation -->
+        <div class="signature">
+          <svg viewBox="0 0 600 120" aria-hidden="true">
+            <path
+              id="sigPath"
+              d="M10,90 C80,10 160,10 220,80 S360,130 420,70 540,10 590,90"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+          </svg>
+        </div>
+
+        <!-- Contact buttons -->
+        <div class="cta">
+          <a class="btn" href="mailto:losha0805@gmail.com">Email me</a>
+          <a
+            class="btn ghost"
+            href="https://www.instagram.com/toiyeusach.jpg/"
+            target="_blank"
+            >Instagram</a
+          >
+          <a
+            class="btn ghost"
+            href="https://www.behance.net/haloson"
+            target="_blank"
+            >Behance</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Carousel for Photography (future feature) 
+     Initially, I wanted each image to be clickable so that users could view other images from the project, but developing that feature would take more time. For now, I’ll present it as a horizontal scroll with markers below. -->
+    <dialog id="lightbox" class="lightbox">
+      <button class="close" aria-label="Close">×</button>
+      <div class="carousel" data-component="carousel">
+        <ul
+          class="entries"
+          id="carouselEntries"
+          tabindex="0"
+          aria-label="Carousel"
+        ></ul>
+        <ul class="markers" id="carouselMarkers" aria-hidden="true"></ul>
+      </div>
+    </dialog>
+  </body>
+</html>
